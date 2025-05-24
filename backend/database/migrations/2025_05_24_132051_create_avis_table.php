@@ -18,7 +18,7 @@ return new class extends Migration
     $table->foreignId('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
     $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade');
     $table->text('commentaire');
-    $table->tinyInteger('note'); // exemple: 1 à 5
+    $table->tinyInteger('note'); 
     $table->timestamps();
 });
 
