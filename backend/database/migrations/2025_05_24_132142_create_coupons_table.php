@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
     $table->id();
     $table->string('code')->unique();
-    $table->integer('remise'); // ex: 10 pour 10%
+    $table->integer('remise'); 
     $table->date('date_expiration');
     $table->timestamps();
 });
