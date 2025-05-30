@@ -1,11 +1,12 @@
-import Admin from './components/admin';
-import Dashboard from './components/dashboard';
-import Sidebar from './components/sidebar';
+import Admin from "./components/admin";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Admin/>
+      <BrowserRouter>
+        <Admin />
+      </BrowserRouter>
     </div>
   );
 }

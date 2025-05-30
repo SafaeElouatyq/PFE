@@ -1,0 +1,86 @@
+.formulaire {
+  width: 80%;
+  margin: 30px auto;
+  padding: 25px 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+
+}
+
+
+
+.formulaire table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.formulaire td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+.formulaire label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.formulaire input[type="text"],
+.formulaire input[type="number"],
+.formulaire input[type="file"],
+.formulaire select,
+.formulaire textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formulaire input[type="file"] {
+  background-color: #fff;
+}
+
+.formulaire input:focus,
+.formulaire select:focus,
+.formulaire textarea:focus {
+  border-color:  rgb(236, 123, 142);
+  outline: none;
+}
+
+.formulaire textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formulaire button {
+  background-color: rgb(236, 123, 142);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulaire button:hover {
+  background-color: rgb(186, 88, 104);
+}
+
+.formulaire p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.formulaire p[style*="color: red"] {
+  color: #d9534f !important;
+  font-weight: bold;
+}
+

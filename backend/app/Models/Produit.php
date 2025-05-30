@@ -11,7 +11,9 @@ class Produit extends Model
         'nom',
         'description',
         'prix',
-        'image'
+        'image',
+        'categorie_id',
+        
 
     ];
     public function articleCommande()
@@ -28,4 +30,9 @@ class Produit extends Model
     {
         return $this->hasMany(Favoir::class);
     }
+    public function category()
+{
+    return $this->belongsTo(Category::class ,'categorie_id');
+}
+
 }
