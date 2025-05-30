@@ -13,9 +13,7 @@ function ListeProduits() {
       .get("http://localhost:8000/api/produits")
       .then((res) => {
         setProduits(res.data);
-        console.log(res.data);
       })
-
       .catch((err) => console.error("Erreur :", err));
   }, []);
 
@@ -61,7 +59,7 @@ function ListeProduits() {
               <td>
                 <div className="action-buttons">
                   <button
-                    onClick={() => navigate(`/modifier-produit/${produit.id}`)}
+                    onClick={() => navigate(`/admin/produits/modifier-produit/${produit.id}`)} 
                     className="action-button edit"
                   >
                     <FaEdit />

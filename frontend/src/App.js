@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LoginForm from "./pages/auth/LoginForm";
 import RegisterForm from "./pages/auth/RegisterForm";
 import Admin from './components/admin';
@@ -17,7 +17,7 @@ export default function App() {
       <Route path="/admin" element={<Admin />}>
         <Route index element={<Dashboard />} />
         <Route path="produits" element={<Produits />}>
-          <Route index element={<ListeProduits />} />
+          <Route index element={<Navigate to="liste-produits" />} />
           <Route path="liste-produits" element={<ListeProduits />} />
           <Route path="ajouter-produit" element={<AjouterProduit />} />
           <Route path="modifier-produit/:id" element={<ModifierProduit />} />

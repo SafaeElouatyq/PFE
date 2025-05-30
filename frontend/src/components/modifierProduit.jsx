@@ -68,7 +68,7 @@ function ModifierProduit() {
     axios
       .post(`http://localhost:8000/api/produits/${id}?_method=PUT`, formData)
       .then(() => {
-        navigate("/liste-produits");
+      navigate("/admin/produits/liste-produits");
       })
       .catch((err) => console.error("Erreur de modification :", err));
   };
