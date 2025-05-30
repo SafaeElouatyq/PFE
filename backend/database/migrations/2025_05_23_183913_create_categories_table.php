@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('favoris', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
-    $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade');
-    $table->timestamps();
-});
-
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favoris');
+        Schema::dropIfExists('categories');
     }
 };

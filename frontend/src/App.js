@@ -1,14 +1,3 @@
-// import Admin from './components/admin';
-// import Dashboard from './components/dashboard';
-// import Sidebar from './components/sidebar';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Admin/>
-//     </div>
-//   );
-// }
 
 // export default App;
 import React from "react";
@@ -20,6 +9,7 @@ import Admin from './components/admin';
 import { Routes, Route } from 'react-router-dom';
 export default function App() {
   return (
+
   
       <Routes>
         <Route path="/" element={<LoginForm />} />
@@ -29,5 +19,6 @@ export default function App() {
        
       </Routes>
     
+
   );
 }

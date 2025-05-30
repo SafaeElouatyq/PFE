@@ -1,0 +1,33 @@
+.tab-button {
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-weight: normal;
+  transition: color 0.3s ease;
+}
+ nav .tab-button{
+  text-decoration: none;
+ }
+
+.tab-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 3px;
+  width: 0;
+  background: cornflowerblue;
+  transition: width 0.3s ease;
+}
+
+.tab-button.active {
+  color: cornflowerblue;
+}
+
+.tab-button.active::after {
+  width: 100%;
+  background-color:cornflowerblue;
+}

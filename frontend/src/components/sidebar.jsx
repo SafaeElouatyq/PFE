@@ -8,7 +8,7 @@ import {
   FaUserCircle
 } from "react-icons/fa";
 
-const Sidebar = () => {
+const Sidebar = ({ setPage }) => {
   return (
     <div
       className="d-flex flex-column p-3"
@@ -27,42 +27,60 @@ const Sidebar = () => {
     >
       <ul className="nav nav-pills flex-column">
         <li className="nav-item mb-2">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
+          <a
+            href="#"
+            onClick={() => setPage('Acceuil')}
+            className="nav-link d-flex align-items-center gap-2 text-dark"
+          >
             <FaHome /> Acceuil
           </a>
         </li>
         <li className="nav-item mb-2">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
+          <a
+            href="#"
+            onClick={() => setPage('dashboard')}
+            className="nav-link d-flex align-items-center gap-2 text-dark"
+          >
             <FaTachometerAlt /> Dashboard
           </a>
         </li>
         <li className="nav-item mb-2">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
+          <a
+            href="#"
+            onClick={() => setPage('produits')}
+            className="nav-link d-flex align-items-center gap-2 text-dark"
+          >
             <FaBox /> Produits
           </a>
         </li>
         <li className="nav-item mb-2">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
+          <a
+            href="#"
+            onClick={() => setPage('utilisateurs')}
+            className="nav-link d-flex align-items-center gap-2 text-dark"
+          >
             <FaUsers /> Utilisateurs
           </a>
         </li>
         <li className="nav-item mb-2">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
+          <a
+            href="#"
+            onClick={() => setPage('commandes')}
+            className="nav-link d-flex align-items-center gap-2 text-dark"
+          >
             <FaShoppingCart /> Commandes
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
-            <FaUserCircle /> Profile
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="#" className="nav-link d-flex align-items-center gap-2 text-dark">
+          <a
+            href="#"
+            onClick={() => setPage('profile')}
+            className="nav-link d-flex align-items-center gap-2 text-dark"
+          >
             <FaUserCircle /> Profile
           </a>
         </li>
       </ul>
-      
     </div>
   );
 };

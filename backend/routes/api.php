@@ -1,6 +1,10 @@
 <?php
 
+
 use App\Http\Controllers\AuthController;
+
+use App\Http\Controllers\CategorieController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +25,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/index', [AuthController::class, 'index']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProduitController;
+
+Route::get('/dashboard', [DashboardController::class, 'dash']);
+
+Route::get('/produits', [ProduitController::class, 'index']);        
+Route::get('/produits/{id}', [ProduitController::class, 'show']);    
+Route::post('/produits', [ProduitController::class, 'store']);       
+Route::put('/produits/{id}', [ProduitController::class, 'update']);  
+Route::delete('/produits/{id}', [ProduitController::class, 'destroy']);
+
+Route::get('/categories', [CategorieController::class, 'index']);
+
