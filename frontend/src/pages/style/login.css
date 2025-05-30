@@ -7,7 +7,7 @@
 }
 
 /* Body Styling */
-body {
+.body {
   background-color: #fff0f3;
   display: flex;
   justify-content: center;

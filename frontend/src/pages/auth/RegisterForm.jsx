@@ -34,7 +34,8 @@ export default function RegisterForm() {
   if (showLogin) return <LoginForm />;
 
   return (
-    <div className="login-container">
+    <div className="body">
+      <div className="login-container">
       <div className="login-box">
         <h2>Créer un compte</h2>
         <p className="subtitle">Inscrivez-vous pour rejoindre le monde sucré</p>
@@ -76,5 +77,7 @@ export default function RegisterForm() {
         </p>
       </div>
     </div>
+    </div>
+    
   );
 }

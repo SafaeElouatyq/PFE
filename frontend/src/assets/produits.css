@@ -7,6 +7,7 @@
   color: black;
   font-weight: normal;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
  nav .tab-button{
   text-decoration: none;
@@ -31,3 +32,4 @@
   width: 100%;
   background-color:cornflowerblue;
 }
+
