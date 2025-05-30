@@ -1,0 +1,142 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #fff0f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;      
+}
+
+/* Container of the form */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card style */
+.login-box {
+  background-color: white;
+  padding: 50px 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  position: relative;
+  text-align: center;
+}
+
+/* Circle above */
+.login-box .profile-circle {
+  width: 120px;
+  height: 120px;
+  background-color: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #777;
+}
+
+/* Titles */
+.login-box h2 {
+  color: #ff5e91;
+  font-size: 28px;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+
+.login-box p.subtitle {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.login-box label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.login-box input[type="email"],
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+
+/* Eye icon (you can make it functional if needed) */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+}
+
+/* Forgot password */
+.login-box .forgot {
+  display: block;
+  text-align: right;
+  margin-bottom: 25px;
+  font-size: 13px;
+  color: #ff5e91;
+  text-decoration: none;
+}
+
+/* Button */
+.login-box button {
+  width: 100%;
+  background-color: #ff5e91;
+  border: none;
+  color: white;
+  padding: 13px 0;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-box button:hover {
+  background-color: #ff3c7a;
+}
+
+/* Sign up link */
+.login-box .signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-box .signup-text span {
+  color: #ff5e91;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+}
