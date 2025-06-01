@@ -1,0 +1,90 @@
+.liste-commande {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+
+
+.commande-card { 
+     border: pink 1px;
+
+  background: white;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+}
+
+.commande-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.commande-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.commande-card tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.commande-card td:first-child {
+  font-weight: 600;
+  padding: 8px 12px;
+  width: 140px;
+  vertical-align: top;
+  color: #555;
+}
+
+.commande-card td:nth-child(2) {
+  padding: 8px 12px;
+  color: #444;
+}
+
+.commande-card ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.commande-card ul li {
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.commande-card small {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.commande-card select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 2px solid cornflowerblue;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+
+.commande-card a {
+  display: inline-flex;
+  align-items: center;
+  color: #c00;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.commande-card a:hover {
+  color: #800000;
+}
+
+.commande-card a svg {
+  margin-left: 6px;
+}

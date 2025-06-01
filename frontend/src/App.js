@@ -7,6 +7,8 @@ import Produits from './components/Produits';
 import ListeProduits from './components/produitListe';
 import AjouterProduit from './components/ajouterProduit';
 import ModifierProduit from './components/modifierProduit';
+import ListeUtilisateurs from "./components/utilisateurs";
+import ListeCommande from "./components/commande";
 
 export default function App() {
   return (
@@ -22,8 +24,8 @@ export default function App() {
           <Route path="ajouter-produit" element={<AjouterProduit />} />
           <Route path="modifier-produit/:id" element={<ModifierProduit />} />
         </Route>
-        <Route path="utilisateurs" element={<div>Page Utilisateurs</div>} />
-        <Route path="commandes" element={<div>Page Commandes</div>} />
+        <Route path="utilisateurs" element={<ListeUtilisateurs/>} />
+        <Route path="commandes" element={<ListeCommande/>} />
         <Route path="profile" element={<div>Page Profile</div>} />
       </Route>
     </Routes>

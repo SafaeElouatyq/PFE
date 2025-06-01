@@ -4,7 +4,8 @@ import {
   FaBox,
   FaUsers,
   FaShoppingCart,
-  FaUserCircle
+  FaUserCircle,
+  FaHome
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import '../assets/sideBar.css'; 
@@ -13,6 +14,11 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul className="nav nav-pills">
+         <li className="nav-item">
+          <NavLink to="/admin" className="nav-link">
+            <FaHome /> Acceuil
+          </NavLink>
+        </li>
         <li className="nav-item">
           <NavLink to="/admin" className="nav-link">
             <FaTachometerAlt /> Dashboard

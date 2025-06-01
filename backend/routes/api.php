@@ -4,7 +4,7 @@
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\CategorieController;
-
+use App\Http\Controllers\CommandeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +28,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\UtController;
 
 Route::get('/dashboard', [DashboardController::class, 'dash']);
 
@@ -38,4 +39,11 @@ Route::put('/produits/{id}', [ProduitController::class, 'update']);
 Route::delete('/produits/{id}', [ProduitController::class, 'destroy']);
 
 Route::get('/categories', [CategorieController::class, 'index']);
+
+Route::get('/utilisateurs',[UtController::class,'index']);
+Route::post('/utilisateurs/{id}',[UtController::class,'destroy']);
+
+Route::get('/commandes',[CommandeController::class,'index']);
+Route::put('/commandes/{id}', [CommandeController::class, 'update']);
+
 
