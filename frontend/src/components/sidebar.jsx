@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import {
   FaTachometerAlt,
   FaBox,
   FaUsers,
   FaShoppingCart,
   FaUserCircle,
-  FaHome
+  FaHome,
 } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
-import '../assets/sideBar.css'; 
+import { NavLink } from "react-router-dom";
+import "../assets/sideBar.css";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul className="nav nav-pills">
-         <li className="nav-item">
-          <NavLink to="/admin" className="nav-link">
+        <li className="nav-item">
+          <NavLink to="/" className="nav-link">
             <FaHome /> Acceuil
           </NavLink>
         </li>

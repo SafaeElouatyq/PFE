@@ -37,7 +37,6 @@ class ProduitController extends Controller
             'image' => $imagePath,
             'categorie_id' => $request->categorie_id
         ]);
-
         return response()->json([
             'message' => 'Produit ajouté avec succès.',
             'produit' => $produit
