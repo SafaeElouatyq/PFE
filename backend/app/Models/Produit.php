@@ -35,4 +35,8 @@ class Produit extends Model
     return $this->belongsTo(Category::class ,'categorie_id');
 }
 
+public function panierItems()
+{
+    return $this->morphMany(PanierItem::class, 'item');
+}
 }

@@ -16,9 +16,7 @@ const Home = () => {
       <nav className="navbar">
         <div className="logo">LOGO</div>
         <ul className="nav-links">
-          <li className="link">
-            <Link to="/">Accueil</Link>
-          </li>
+          
           <li className="link">
             <Link to="/register" className="nav-inscription">
               Inscription

@@ -20,12 +20,14 @@ export default function LoginForm() {
     e.preventDefault();
     if (user.email !== "" && user.mot_de_passe !== "") {
       axios.post("http://127.0.0.1:8000/api/login", user).then((m) => {
+        // Store the token in localStorage
+        localStorage.setItem("token", m.data.access_token);
         console.log("login success", user);
         setUser({
           email: "",
-          mot_de_passe : "",
+          mot_de_passe: "",
         });
-        navigate('/admin')
+        navigate('/acceuil');
       });
     }
   };

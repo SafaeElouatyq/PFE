@@ -10,7 +10,7 @@ class GateauPersonnalise extends Model
     use HasFactory;
     protected $fillable = [
         'utilisateur_id',
-        'form',
+        'forme',
         'saveur',
         'taille',
         'creme_interieur',
@@ -28,4 +28,9 @@ class GateauPersonnalise extends Model
     {
         return $this->belongsTo(Utilisateur::class);
     }
+
+    public function panierItems()
+{
+    return $this->morphMany(PanierItem::class, 'item');
+}
 }

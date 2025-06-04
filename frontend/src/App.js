@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginForm from "./pages/auth/LoginForm";
 import RegisterForm from "./pages/auth/RegisterForm";
@@ -12,30 +12,37 @@ import ListeUtilisateurs from "./components/utilisateurs";
 import ListeCommande from "./components/commande";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
-import First from "./components/First"; // Add this import
+import First from "./components/First"; 
+import Personnalise from "./components/pages/personnalise"; // Add this import
 
 export default function App() {
-  return (
-    <>
-      <Nav />
-      <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/acceuil" element={<First />} /> 
-        <Route path="/admin" element={<Admin />}>
-          <Route index element={<Dashboard />} />
-          <Route path="produits" element={<Produits />}>
-            <Route index element={<Navigate to="liste-produits" />} />
-            <Route path="liste-produits" element={<ListeProduits />} />
-            <Route path="ajouter-produit" element={<AjouterProduit />} />
-            <Route path="modifier-produit/:id" element={<ModifierProduit />} />
-          </Route>
-          <Route path="utilisateurs" element={<ListeUtilisateurs />} />
-          <Route path="commandes" element={<ListeCommande />} />
-          <Route path="profile" element={<div>Page Profile</div>} />
-        </Route>
-      </Routes>
-    </>
-  );
+    const location = useLocation();
+
+    return (
+        <>
+            {location.pathname !== "/" &&
+            location.pathname !== "/admin" &&
+             location.pathname !== "/login" &&
+             location.pathname !== "/register" && <Nav />}
+            <Routes>
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<RegisterForm />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/acceuil" element={<First />} />
+                <Route path="/personnalise" element={<Personnalise />} /> {/* Add this line */}
+                <Route path="/admin" element={<Admin />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="produits" element={<Produits />}>
+                        <Route index element={<Navigate to="liste-produits" />} />
+                        <Route path="liste-produits" element={<ListeProduits />} />
+                        <Route path="ajouter-produit" element={<AjouterProduit />} />
+                        <Route path="modifier-produit/:id" element={<ModifierProduit />} />
+                    </Route>
+                    <Route path="utilisateurs" element={<ListeUtilisateurs />} />
+                    <Route path="commandes" element={<ListeCommande />} />
+                    <Route path="profile" element={<div>Page Profile</div>} />
+                </Route>
+            </Routes>
+        </>
+    );
 }

@@ -1,12 +1,15 @@
 <?php
 
-
-use App\Http\Controllers\AuthController;
-
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\CommandeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PanierController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\UtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +25,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::post('/index', [AuthController::class, 'index']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProduitController;
-use App\Http\Controllers\UtController;
 
 Route::get('/dashboard', [DashboardController::class, 'dash']);
 
@@ -42,10 +42,14 @@ Route::post('/categories', [CategorieController::class, 'store']);
 Route::get('/categories', [CategorieController::class, 'index']);
 Route::put('/categories/{id}', [CategorieController::class, 'update']);
 
-Route::get('/utilisateurs',[UtController::class,'index']);
-Route::post('/utilisateurs/{id}',[UtController::class,'destroy']);
+Route::get('/utilisateurs', [UtController::class, 'index']);
+Route::post('/utilisateurs/{id}', [UtController::class, 'destroy']);
 
-Route::get('/commandes',[CommandeController::class,'index']);
+Route::get('/commandes', [CommandeController::class, 'index']);
 Route::put('/commandes/{id}', [CommandeController::class, 'update']);
 
-
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/panier/ajouter', [PanierController::class, 'ajouterAuPanier']);
+});
+use App\Http\Controllers\PersonnaliseController;
+Route::middleware('auth:sanctum')->post('/personnalise', [PersonnaliseController::class, 'store']);

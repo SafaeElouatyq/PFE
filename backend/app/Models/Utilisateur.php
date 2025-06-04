@@ -2,21 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Utilisateur extends Model
+class Utilisateur extends Authenticatable
 {
-       use HasApiTokens, HasFactory;
+    use HasApiTokens, HasFactory;
 
     protected $table = 'utilisateurs';
     protected $fillable = [
-    'nom',
-    'email',
-    'mot_de_passe'
-];
-
+        'nom',
+        'email',
+        'mot_de_passe'
+    ];
 
     public function commandes()
     {
@@ -38,4 +37,13 @@ class Utilisateur extends Model
         return $this->hasMany(GateauPersonnalise::class);
     }
 
+    public function panier()
+    {
+        return $this->hasOne(Panier::class, 'utilisateur_id');
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->mot_de_passe;
+    }
 }

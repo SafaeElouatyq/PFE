@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm"; // Import login form
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterForm() {
+    const navigate = useNavigate();
+
   const [user, setUser] = useState({
     nom: "",
     email: "",
@@ -28,7 +31,11 @@ export default function RegisterForm() {
         console.log("Register success", user);
         setUser({ nom: "", email: "", mot_de_passe: "" });
       });
+              navigate('/login'); 
+
+
     }
+    
   };
 
   if (showLogin) return <LoginForm />;

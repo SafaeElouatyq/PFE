@@ -15,7 +15,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <ul className="nav nav-pills">
         <li className="nav-item">
-          <NavLink to="/" className="nav-link">
+          <NavLink to="/acceuil" className="nav-link">
             <FaHome /> Acceuil
           </NavLink>
         </li>
