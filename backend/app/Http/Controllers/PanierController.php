@@ -50,6 +50,17 @@ class PanierController extends Controller
 
         $item->delete();
 
-        return response()->json(['message' => 'تم حذف العنصر من الكارت']);
+        return response()->json(['message' => 'deleted']);
+    }
+    public function modifierQuantite(Request $request, $id)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'quantite' => 'required|integer|min:1',
+        ]);
+        $item = PanierItem::where('utilisateur_id', $user->id)->where('id', $id)->firstOrFail();
+        $item->quantite = $request->quantite;
+        $item->save();
+        return response()->json(['message' => 'Quantité mise à jour']);
     }
 }

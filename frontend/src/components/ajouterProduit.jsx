@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import '../assets/ajouterProduit.css'
+import { useNavigate } from "react-router-dom";
 
 function AjouterProduit() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({
     nom: "",
@@ -44,6 +46,8 @@ function AjouterProduit() {
         const responseErrors = err?.response?.data?.errors || { general: ["Erreur inconnue."] };
         setErrors(responseErrors);
       });
+
+    navigate('/produits');   
   };
 
   return (

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Produit;
+use App\Models\PanierItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProduitController extends Controller
 {
@@ -83,5 +85,37 @@ class ProduitController extends Controller
         return response()->json([
             'message' => 'Produit supprimé.'
         ]);
+    }
+
+    public function ajouterAuPanier(Request $request)
+    {
+        $request->validate([
+            'produit_id' => 'required|exists:produits,id',
+            'quantite' => 'required|integer|min:1'
+        ]);
+
+        $user = Auth::user();
+
+        $item = PanierItem::where('utilisateur_id', $user->id)
+            ->where('item_id', $request->produit_id)
+            ->where('item_type', 'App\Models\Produit')
+            ->first();
+
+        if ($item) {
+            $item->quantite += $request->quantite;
+            $item->save();
+        } else {
+            $panier = $user->panier()->firstOrCreate([]);
+            PanierItem::create([
+                'panier_id' => $panier->id,
+                'utilisateur_id' => $user->id,
+                'item_id' => $request->produit_id,
+                'item_type' => Produit::class,
+                'quantite' => $request->quantite,
+                'prix' => Produit::find($request->produit_id)->prix,
+            ]);
+        }
+
+        return response()->json(['message' => 'Produit ajouté au panier.']);
     }
 }

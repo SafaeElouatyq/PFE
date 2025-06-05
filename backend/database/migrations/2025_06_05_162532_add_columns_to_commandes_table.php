@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-    Schema::create('favoris', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
-    $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade');
-    $table->timestamps();
-});
-
+        Schema::table('commandes', function (Blueprint $table) {
+            $table->string('adresse')->nullable();
+            $table->string('telephone')->nullable();
+        });
     }
 
     /**
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favoris');
+        Schema::table('commandes', function (Blueprint $table) {
+            $table->dropColumn(['adresse', 'telephone']);
+        });
     }
 };

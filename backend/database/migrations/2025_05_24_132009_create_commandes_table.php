@@ -18,6 +18,8 @@ return new class extends Migration
     $table->foreignId('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
     $table->float('montant_total');
     $table->string('statut')->default('en_attente');
+    $table->string('adresse')->nullable();
+    $table->string('telephone')->nullable();
     $table->timestamps();
 });
 

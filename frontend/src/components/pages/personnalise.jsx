@@ -9,8 +9,9 @@ import {
   FaPalette,
   FaFileImage,
   FaRegComment,
-    FaStickyNote,
-
+  FaStickyNote,
+  FaCookieBite,
+  FaEnvelopeOpenText
 } from "react-icons/fa";
 
 const formes = [
@@ -153,8 +154,8 @@ export default function Personnalise() {
     try {
       await axios.post("http://localhost:8000/api/personnalise", formData, {
         headers: {
-          "Authorization": `Bearer ${token}`,
-          "Accept": "application/json",
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
         },
       });
       alert("Votre personnalisation a été envoyée !");
@@ -177,176 +178,194 @@ export default function Personnalise() {
   };
 
   return (
-    <div className="body"><div className="personnalise-container">
-      <h1>
-        <FaBirthdayCake style={{ marginRight: 8 }} />
-        Personnalisez votre gâteau
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>
-            <FaShapes style={{ marginRight: 5 }} />
-            Forme
-          </label>
-          <select
-            required
-            value={personnalise.forme}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, forme: e.target.value })
-            }
-          >
-            <option value="">Choisir...</option>
-            {formes.map((f) => (
-              <option key={f.value} value={f.value}>
-                {f.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>
-            <FaLayerGroup style={{ marginRight: 5 }} />
-            Taille
-          </label>
-          <select
-            required
-            value={personnalise.taille}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, taille: e.target.value })
-            }
-          >
-            <option value="">Choisir...</option>
-            {tailles.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label} - {t.desc} - {t.prix} MAD
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>
-            <FaIceCream style={{ marginRight: 5 }} />
-            Saveur
-          </label>
-          <select
-            required
-            value={personnalise.saveur}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, saveur: e.target.value })
-            }
-          >
-            <option value="">Choisir...</option>
-            {saveurs.map((s) => (
-              <option key={s.value} value={s.value}>
-                {s.label} - {s.desc} - {s.prix} MAD
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>
-            <FaPalette style={{ marginRight: 5 }} />
-            Style
-          </label>
-          <select
-            required
-            value={personnalise.style}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, style: e.target.value })
-            }
-          >
-            <option value="">Choisir...</option>
-            {styles.map((s) => (
-              <option key={s.value} value={s.value}>
-                {s.label} - {s.desc} - {s.prix} MAD
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Crème intérieure</label>
-          <select
-            required
-            value={personnalise.cremeInterieur}
-            onChange={(e) =>
-              setPersonnalise({
-                ...personnalise,
-                cremeInterieur: e.target.value,
-              })
-            }
-          >
-            <option value="">Choisir...</option>
-            {cremes.map((c) => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
-            ))}
-          </select>
-        </div>{" "}
-        <div className="form-group">
-          <label>Crème extérieure</label>
-          <select
-            required
-            value={personnalise.cremeExterieur}
-            onChange={(e) =>
-              setPersonnalise({
-                ...personnalise,
-                cremeExterieur: e.target.value,
-              })
-            }
-          >
-            <option value="">Choisir...</option>
-            {cremes.map((c) => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Message</label>
-          <input
-            type="text"
-            value={personnalise.message}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, message: e.target.value })
-            }
-          />
-        </div>
-        <div className="form-group">
-          <label> 
-            <FaRegComment style={{ marginRight: 5 }} />
-            Décoration souhaitée</label>
-          <textarea
-            value={personnalise.decoration}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, decoration: e.target.value })
-            }
-          />
-        </div>
-        <div className="form-group">
-          <label>
-            <FaFileImage style={{ marginLeft: 5 }} />Image modèle
-          </label>
-          <input type="file" accept="image/*" onChange={handleFileChange} />
-        </div>
-        <div className="form-group">
-          <label>
-            <FaStickyNote style={{ marginLeft: 5 }} />Notes supplémentaires
-          </label>
-          <textarea
-            value={personnalise.notes}
-            onChange={(e) =>
-              setPersonnalise({ ...personnalise, notes: e.target.value })
-            }
-          />
-        </div>
-        <div className="form-group">
-          <strong>Prix estimé : {personnalise.prixEstime} MAD</strong>
-        </div>
-        <button type="submit">Envoyer la personnalisation</button>
-      </form>
-    </div></div>
-    
+    <div className="body">
+      <div className="personnalise-container">
+        <h1>
+          <FaBirthdayCake style={{ marginRight: 8, color: "#ff5e91" }} />
+          Personnalisez votre gâteau
+        </h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>
+              <FaShapes style={{ marginRight: 5, color: "#ff5e91" }} />
+              Forme
+            </label>
+            <select
+              required
+              value={personnalise.forme}
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, forme: e.target.value })
+              }
+            >
+              <option value="">Choisir...</option>
+              {formes.map((f) => (
+                <option key={f.value} value={f.value}>
+                  {f.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>
+              <FaLayerGroup style={{ marginRight: 5, color: "#ff5e91" }} />
+              Taille
+            </label>
+            <select
+              required
+              value={personnalise.taille}
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, taille: e.target.value })
+              }
+            >
+              <option value="">Choisir...</option>
+              {tailles.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label} - {t.desc} - {t.prix} MAD
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>
+              <FaIceCream style={{ marginRight: 5, color: "#ff5e91" }} />
+              Saveur
+            </label>
+            <select
+              required
+              value={personnalise.saveur}
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, saveur: e.target.value })
+              }
+            >
+              <option value="">Choisir...</option>
+              {saveurs.map((s) => (
+                <option key={s.value} value={s.value}>
+                  {s.label} - {s.desc} - {s.prix} MAD
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>
+              <FaPalette style={{ marginRight: 5, color: "#ff5e91" }} />
+              Style
+            </label>
+            <select
+              required
+              value={personnalise.style}
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, style: e.target.value })
+              }
+            >
+              <option value="">Choisir...</option>
+              {styles.map((s) => (
+                <option key={s.value} value={s.value}>
+                  {s.label} - {s.desc} - {s.prix} MAD
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>
+              <FaCookieBite style={{ marginRight: 5, color: "#ff5e91" }} />
+              Crème intérieure
+            </label>
+            <select
+              required
+              value={personnalise.cremeInterieur}
+              onChange={(e) =>
+                setPersonnalise({
+                  ...personnalise,
+                  cremeInterieur: e.target.value,
+                })
+              }
+            >
+              <option value="">Choisir...</option>
+              {cremes.map((c) => (
+                <option key={c.value} value={c.value}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </div>{" "}
+          <div className="form-group">
+            <label>
+              <FaLayerGroup style={{ marginRight: 5, color: "#ff5e91" }} />
+              Crème extérieure
+            </label>
+            <select
+              required
+              value={personnalise.cremeExterieur}
+              onChange={(e) =>
+                setPersonnalise({
+                  ...personnalise,
+                  cremeExterieur: e.target.value,
+                })
+              }
+            >
+              <option value="">Choisir...</option>
+              {cremes.map((c) => (
+                <option key={c.value} value={c.value}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>
+              <FaEnvelopeOpenText style={{ marginRight: 5, color: "#ff5e91" }} />
+              Message
+            </label>
+            <input
+              type="text"
+              value={personnalise.message}
+                placeholder="Ex: Joyeux anniversaire, Bonne fête, etc."
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, message: e.target.value })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <label>
+              <FaRegComment style={{ marginRight: 5, color: "#ff5e91" }} />
+              Décoration souhaitée
+            </label>
+            <textarea
+              value={personnalise.decoration}
+                placeholder="Décrivez la décoration souhaitée (couleurs, thème, etc.)"
+
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, decoration: e.target.value })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <label>
+              <FaFileImage style={{ marginRight: 5 , color: "#ff5e91"  }} />
+              Image modèle
+            </label>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+          </div>
+          <div className="form-group">
+            <label>
+              <FaStickyNote style={{ marginRight: 5 , color: "#ff5e91" }} />
+              Notes supplémentaires
+            </label>
+            <textarea
+              value={personnalise.notes}
+                placeholder="Notes supplémentaires pour le pâtissier"
+
+              onChange={(e) =>
+                setPersonnalise({ ...personnalise, notes: e.target.value })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <strong>Prix estimé : {personnalise.prixEstime} MAD</strong>
+          </div>
+          <button type="submit">Envoyer la personnalisation</button>
+        </form>
+      </div>
+    </div>
   );
 }

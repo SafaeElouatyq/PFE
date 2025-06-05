@@ -10,6 +10,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\UtController;
+use App\Http\Controllers\FavorisController;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,20 @@ Route::put('/commandes/{id}', [CommandeController::class, 'update']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/panier/ajouter', [PanierController::class, 'ajouterAuPanier']);
+    Route::get('/favoris', [FavorisController::class, 'index']);
+    Route::post('/favoris', [FavorisController::class, 'store']);
+    Route::delete('/favoris/{produit_id}', [FavorisController::class, 'destroy']);
+    
+    Route::get('/panier', [PanierController::class, 'afficherPanier']);
+    Route::post('/panier', [PanierController::class, 'ajouterAuPanier']);
+    Route::delete('/panier/{id}', [PanierController::class, 'supprimerDuPanier']);
+    Route::patch('/panier/{id}', [PanierController::class, 'modifierQuantite']);
 });
+
 use App\Http\Controllers\PersonnaliseController;
+
 Route::middleware('auth:sanctum')->post('/personnalise', [PersonnaliseController::class, 'store']);
+
+Route::middleware('auth:sanctum')->post('/ajouter-au-panier', [ProduitController::class, 'ajouterAuPanier']);
+
+Route::post('/coupon/check', [CouponController::class, 'check']);
