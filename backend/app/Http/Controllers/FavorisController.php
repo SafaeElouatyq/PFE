@@ -9,7 +9,7 @@ class FavorisController extends Controller
 {
     public function index(Request $request)
     {
-        return Favoir::where('utilisateur_id', $request->user()->id)->get();
+        return Favoir::with('produit')->where('utilisateur_id', $request->user()->id)->get();
     }
 
     public function store(Request $request)

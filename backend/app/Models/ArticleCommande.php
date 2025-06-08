@@ -11,9 +11,12 @@ class ArticleCommande extends Model
     protected $table='articles_commande';
     protected $fillable = [
         'commande_id',
-        'produit_id',
+        'item_id',
+        'item_type',
         'quantite',
-        'prix_unitaire'];
+        'prix_unitaire',
+
+    ];
 
        public function commande()
     {
@@ -24,4 +27,10 @@ class ArticleCommande extends Model
     {
         return $this->belongsTo(Produit::class);
     }
+
+    public function item()
+{
+    return $this->morphTo();
+}
+
 }

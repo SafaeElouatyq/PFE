@@ -192,5 +192,5 @@
 }
 
 .addtocart:hover {
-  background-color: rgb(112, 150, 222);
+  transform: scale(1.02); 
 }

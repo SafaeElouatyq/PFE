@@ -12,6 +12,8 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\UtController;
 use App\Http\Controllers\FavorisController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +48,13 @@ Route::put('/categories/{id}', [CategorieController::class, 'update']);
 
 Route::get('/utilisateurs', [UtController::class, 'index']);
 Route::post('/utilisateurs/{id}', [UtController::class, 'destroy']);
+Route::delete('/utilisateurs/{id}', [UtController::class, 'destroy']);
 
 Route::get('/commandes', [CommandeController::class, 'index']);
 Route::put('/commandes/{id}', [CommandeController::class, 'update']);
+Route::delete('/commandes/{id}', [CommandeController::class, 'destroy']);
+Route::get('/commandes/{id}', [CommandeController::class, 'show']);
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/panier/ajouter', [PanierController::class, 'ajouterAuPanier']);
@@ -60,6 +66,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/panier', [PanierController::class, 'ajouterAuPanier']);
     Route::delete('/panier/{id}', [PanierController::class, 'supprimerDuPanier']);
     Route::patch('/panier/{id}', [PanierController::class, 'modifierQuantite']);
+
+    Route::get('/profile', [ProfileController::class, 'show']);
+    Route::post('/profile', [ProfileController::class, 'update']);
+    Route::post('/profile/password', [ProfileController::class, 'changePassword']);
+    Route::get('/profile/commandes', [ProfileController::class, 'commandes']);
 });
 
 use App\Http\Controllers\PersonnaliseController;
@@ -67,5 +78,23 @@ use App\Http\Controllers\PersonnaliseController;
 Route::middleware('auth:sanctum')->post('/personnalise', [PersonnaliseController::class, 'store']);
 
 Route::middleware('auth:sanctum')->post('/ajouter-au-panier', [ProduitController::class, 'ajouterAuPanier']);
-
 Route::post('/coupon/check', [CouponController::class, 'check']);
+Route::middleware('auth:sanctum')->post('/commandes', [CommandeController::class, 'store']);
+
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+    Route::get('/admin/profile', [AdminProfileController::class, 'show']);
+    Route::post('/admin/profile', [AdminProfileController::class, 'update']);
+    Route::post('/admin/password', [AdminProfileController::class, 'changePassword']);
+    Route::post('/admins', [AdminProfileController::class, 'store']); // Ajouter un admin
+});
+
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+    Route::get('/profile', [AdminProfileController::class, 'profile']);
+    Route::post('/profile', [AdminProfileController::class, 'updateProfile']);
+    Route::post('/password', [AdminProfileController::class, 'changePassword']);
+    Route::post('/admins', [AdminProfileController::class, 'addAdmin']);
+});
+
+Route::post('/admin/login', [AuthController::class, 'adminLogin']);
+
+

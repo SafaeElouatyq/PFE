@@ -1,0 +1,127 @@
+.confirmer-commande-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(100, 149, 237, 0.07);
+  padding: 32px 24px;
+}
+
+.confirmer-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  color: #333;
+}
+
+.confirmer-flex {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.confirmer-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.confirmer-form label {
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.confirmer-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+.confirmer-btn {
+  background: #4caf50 !important;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+
+.confirmer-btn:hover {
+  background: #388e3c !important;
+}
+
+.confirmer-message {
+  color: green;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.confirmer-summary {
+  flex: 1;
+  background: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(100, 149, 237, 0.07);
+  padding: 24px 18px;
+  min-width: 260px;
+  max-width: 340px;
+}
+
+.confirmer-summary h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.15rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.confirmer-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.confirmer-summary li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1rem;
+}
+
+.confirmer-product {
+  flex: 2;
+  color: #222;
+}
+
+.confirmer-qty {
+  flex: 1;
+  text-align: center;
+  color: #888;
+}
+
+.confirmer-price {
+  flex: 1;
+  text-align: right;
+  font-weight: 500;
+  color: #444;
+}
+
+.confirmer-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin-top: 18px;
+  border-top: 1.5px solid #e0e0e0;
+  padding-top: 12px;
+}

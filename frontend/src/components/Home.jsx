@@ -14,7 +14,11 @@ const Home = () => {
   return (
     <><section className="home">
       <nav className="navbar">
-        <div className="logo">LOGO</div>
+        <div className="logo">
+          <Link to="/admin-login" style={{ textDecoration: "none", color: "inherit" }}>
+            LOGO
+          </Link>
+        </div>
         <ul className="nav-links">
           
           <li className="link">

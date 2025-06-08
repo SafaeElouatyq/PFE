@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RegisterForm from "./RegisterForm"; // Import register form
+import RegisterForm from "./RegisterForm"; 
 import '../style/login.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ export default function LoginForm() {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "",mot_de_passe: "" });
   const [showRegister, setShowRegister] = useState(false);
+  const [error, setError] = useState("");
   
   const getValue = (e) => {
     setUser((prev) => ({
@@ -16,19 +17,21 @@ export default function LoginForm() {
     }));
   };
 
-  const add = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (user.email !== "" && user.mot_de_passe !== "") {
-      axios.post("http://127.0.0.1:8000/api/login", user).then((m) => {
-        // Store the token in localStorage
-        localStorage.setItem("token", m.data.access_token);
-        console.log("login success", user);
-        setUser({
-          email: "",
-          mot_de_passe: "",
-        });
-        navigate('/acceuil');
-      });
+    setError("");
+    try {
+      const res = await axios.post("http://localhost:8000/api/login", user);
+      localStorage.setItem("token", res.data.access_token);
+      if (res.data.redirect) {
+        navigate(res.data.redirect);
+      } else {
+        navigate("/");
+      }
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Erreur lors de la connexion"
+      );
     }
   };
 
@@ -39,6 +42,8 @@ export default function LoginForm() {
       <div className="login-box">
         <h2>Bienvenue !</h2>
         <p className="subtitle">Connectez-vous à votre compte sucré</p>
+
+        {error && <div className="error-message">{error}</div>}
 
         <input
           type="email"
@@ -57,7 +62,7 @@ export default function LoginForm() {
           required
         />
 
-        <button type="submit" onClick={add} value="login">Se connecter</button>
+        <button type="submit" onClick={handleSubmit} value="login">Se connecter</button>
 
         <p className="mt-4 text-center">
           Vous n'avez pas de compte ?{" "}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import "../assets/listProduit.css";
+import "../../assets/listProduit.css";
 
 function ListeProduits() {
   const [produits, setProduits] = useState([]);

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import '../assets/ajouterProduit.css'
+import '../../assets/ajouterProduit.css';
+
+
 import { useNavigate } from "react-router-dom";
 
 function AjouterProduit() {

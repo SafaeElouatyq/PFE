@@ -3,8 +3,11 @@ import axios from "axios";
 import home1 from "../assets/images/home1.jpeg";
 import "../assets/First.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useNavigate   } from "react-router-dom";
 
 const First = () => {
+  const Navigate = useNavigate();
+
   const [produits, setProduits] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -80,7 +83,7 @@ const First = () => {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       )
-      .then(() => alert("Produit ajouté au panier !"))
+      .then(() => Navigate("/panier"))
       .catch((err) => {
         alert(
           "Erreur lors de l'ajout au panier: " +

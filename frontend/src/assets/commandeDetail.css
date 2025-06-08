@@ -1,0 +1,95 @@
+.commande-detail {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(100, 149, 237, 0.07);
+  padding: 32px 28px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.commande-detail h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 28px;
+  color: #333;
+}
+
+.commande-detail > div {
+  margin-bottom: 12px;
+  font-size: 1.08rem;
+  color: #444;
+}
+
+.commande-detail h3 {
+  margin-top: 30px;
+  margin-bottom: 14px;
+  font-size: 1.15rem;
+  color: #4169e1;
+  font-weight: 600;
+}
+
+.commande-detail ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.commande-detail li {
+  background: #f7f7fa;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 4px rgba(100,149,237,0.06);
+  font-size: 1rem;
+}
+
+.commande-detail strong {
+  color: #222;
+  font-size: 1.08rem;
+}
+
+.commande-detail img {
+  display: block;
+  margin: 10px 0 0 0;
+  width: 120px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(100,149,237,0.10);
+}
+
+.gateau-details {
+  margin: 10px 0 0 0;
+  padding: 10px 16px;
+  background: #eaf1fb;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  color: #2d3a4a;
+}
+
+.gateau-details div {
+  margin-bottom: 3px;
+}
+
+.gateau-details img {
+  margin-top: 8px;
+  width: 120px;
+  border-radius: 8px;
+}
+
+.commande-detail button {
+  display: block;
+  margin: 30px auto 0 auto;
+  background: #6495ed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.commande-detail button:hover {
+  background: #4169e1;
+}

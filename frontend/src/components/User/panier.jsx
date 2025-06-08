@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../../assets/Panier.css";
 
 const Panier = () => {
@@ -7,6 +8,7 @@ const Panier = () => {
   const [promo, setPromo] = useState("");
   const [promoInfo, setPromoInfo] = useState(null);
   const [promoError, setPromoError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -55,7 +57,7 @@ const Panier = () => {
 
   return (
     <div className="panier-main">
-      <h2 className="panier-title">Mon Panier</h2>
+      <h1 className="panier-title">Mon Panier</h1>
       <div className="panier-flex">
         <div className="panier-items">
           {items.length === 0 ? (
@@ -120,7 +122,7 @@ const Panier = () => {
                         className="panier-remove-btn"
                         onClick={() => supprimerItem(item.id)}
                       >
-                        ×
+                        x
                       </button>
                     </td>
                   </tr>
@@ -129,7 +131,6 @@ const Panier = () => {
             </table>
           )}
         </div>
-
 
         <div className="panier-summary">
           <h3>Résumé de la commande</h3>
@@ -143,7 +144,7 @@ const Panier = () => {
             />
             <button
               onClick={appliquerPromo}
-              style={{ padding: "6px 12px" }}
+              className="panier-promo-btn"
             >
               Appliquer
             </button>
@@ -172,7 +173,7 @@ const Panier = () => {
           </div>
           <button
             className="panier-checkout-btn"
-            onClick={() => alert("Continuer vers le paiement...")}
+            onClick={() => navigate("/confirmer-commande", { state: { items, totalFinal } })}
           >
             Valider la commande
           </button>

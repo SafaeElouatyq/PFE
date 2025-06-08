@@ -10,9 +10,12 @@ class Commande extends Model
     use HasFactory;
     protected $fillable = [
         'utilisateur_id',
-        'montant_totale',
-        'statut'];
-        protected $table = 'commandes';
+        'montant_total',
+        'statut',
+        'adresse',
+        'telephone'
+    ];
+    protected $table = 'commandes';
 
     public function utilisateur()
     {
@@ -22,7 +25,5 @@ class Commande extends Model
     public function articles()
     {
         return $this->hasMany(ArticleCommande::class);
-    }    
-
-
+    }
 }

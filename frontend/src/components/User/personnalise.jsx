@@ -13,6 +13,7 @@ import {
   FaCookieBite,
   FaEnvelopeOpenText
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const formes = [
   { label: "Rond", value: "rond" },
@@ -98,6 +99,7 @@ const styles = [
 ];
 
 export default function Personnalise() {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [personnalise, setPersonnalise] = useState({
     forme: "",
@@ -158,7 +160,7 @@ export default function Personnalise() {
           Accept: "application/json",
         },
       });
-      alert("Votre personnalisation a été envoyée !");
+      navigate("/panier");
       setPersonnalise({
         forme: "",
         taille: "",
@@ -363,7 +365,7 @@ export default function Personnalise() {
           <div className="form-group">
             <strong>Prix estimé : {personnalise.prixEstime} MAD</strong>
           </div>
-          <button type="submit">Envoyer la personnalisation</button>
+          <button type="submit">Ajouter au panier</button>
         </form>
       </div>
     </div>

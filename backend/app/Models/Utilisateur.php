@@ -11,11 +11,9 @@ class Utilisateur extends Authenticatable
     use HasApiTokens, HasFactory;
 
     protected $table = 'utilisateurs';
-    protected $fillable = [
-        'nom',
-        'email',
-        'mot_de_passe'
-    ];
+protected $fillable = [
+    'nom', 'email', 'mot_de_passe', 'image', 'adresse', 'telephone'
+];
 
     public function commandes()
     {

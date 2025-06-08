@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Utilisateur;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => $user,
+            'role' => 'utilisateur',
             'token' => $token
         ]);
     }
@@ -37,21 +39,45 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email',
-            'mot_de_passe' => 'required|string',
+            'email' => 'required|email',
+            'mot_de_passe' => 'required',
         ]);
 
         $user = Utilisateur::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->mot_de_passe, $user->mot_de_passe)) {
+        if (!$user || !Hash::check($request->mot_de_passe, $user->mot_de_passe)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        $token = $user->createToken('token')->plainTextToken;
+        $token = $user->createToken('user-token')->plainTextToken;
 
         return response()->json([
             'access_token' => $token,
-              'token_type' => 'Bearer',
+            'role' => 'utilisateur',
+            'user' => $user,
+            'redirect' => '/acceuil'
+        ]);
+    }
+    public function adminLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'mot_de_passe' => 'required',
+        ]);
+
+        $admin = Admin::where('email', $request->email)->first();
+
+        if (!$admin || !Hash::check($request->mot_de_passe, $admin->mot_de_passe)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+
+        $token = $admin->createToken('admin-token')->plainTextToken;
+
+        return response()->json([
+            'access_token' => $token,
+            'role' => 'admin',
+            'admin' => $admin,
+            'redirect' => '/admin'
         ]);
     }
 }

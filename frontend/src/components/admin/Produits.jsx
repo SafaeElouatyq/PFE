@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import '../assets/produits.css';
+import '../../assets/produits.css';
 
 function Produits() {
   return (
