@@ -26,7 +26,6 @@ class Admin extends Authenticatable
         'remember_token',
     ];
 
-    // If you use Laravel's Auth, set the password field
     public function getAuthPassword()
     {
         return $this->mot_de_passe;

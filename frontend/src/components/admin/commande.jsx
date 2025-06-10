@@ -36,9 +36,9 @@ function ListeCommande() {
   };
 
   return (
-    <div  className="liste-commande">
+    <div className="liste-commande">
       <h2 className="mb-4">Gestion des Commandes</h2>
-      
+
       {commandes.map((cmd) => (
         <div key={cmd.id} className="commande-card">
           <h3 className="text-lg font-semibold mb-4">Commande #{cmd.id}</h3>
@@ -80,7 +80,7 @@ function ListeCommande() {
                         <span className="font-semibold">
                           {art.item?.nom || "gateau personnalisé"}
                         </span>{" "}
-                        – {art.quantite} x {art.prix_unitaire} DH
+                        - {art.quantite} x {art.prix_unitaire} DH
                       </li>
                     ))}
                   </ul>
@@ -91,23 +91,34 @@ function ListeCommande() {
                 <td>{cmd.montant_total} DH</td>
               </tr>
               <tr>
-                <td className="text-right">
-                  <Link to={`/admin/commandes/${cmd.id}`} className="btn-details">
-                    Afficher détails
-                  </Link>
-                  <a
-                    onClick={() => Delete(cmd.id)}
-                    className="text-red-600 hover:text-red-800 flex items-center justify-end"
+                <td colSpan={2}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
                   >
-                    Annuler <GiCancel className="mr-1" />
-                  </a>
+                    <Link
+                      to={`/admin/commandes/${cmd.id}`}
+                      className="btn-details"
+                    >
+                      Afficher détails
+                    </Link>
+                    <a
+                      onClick={() => Delete(cmd.id)}
+                      className="text-red-600 hover:text-red-800 flex items-center"
+                      style={{ cursor: "pointer" }}
+                    >
+                      Annuler <GiCancel className="mr-1" />
+                    </a>
+                  </div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       ))}
-      
     </div>
   );
 }

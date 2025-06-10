@@ -17,12 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // If authenticated as admin (using 'admin' guard)
         if (Auth::guard('admin')->check()) {
             return $next($request);
         }
 
-        // Otherwise (client/utilisateur), redirect to /acceuil
         return redirect('/acceuil');
     }
 }

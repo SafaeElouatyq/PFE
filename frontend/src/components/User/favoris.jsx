@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "../../assets/favoris.css";
 
 function Favoris() {
   const [favoris, setFavoris] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -22,6 +24,27 @@ function Favoris() {
       })
       .then(() => setFavoris(favoris.filter(f => f.produit_id !== produit_id)))
       .catch((err) => console.error("Erreur suppression :", err));
+  };
+
+  const ajouterAuPanier = (prod) => {
+    axios
+      .post(
+        "http://localhost:8000/api/ajouter-au-panier",
+        {
+          produit_id: prod.id,
+          quantite: 1,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then(() => navigate("/panier"))
+      .catch((err) => {
+        alert(
+          "Erreur lors de l'ajout au panier: " +
+            (err.response?.data?.message || err.message)
+        );
+      });
   };
 
   return (
@@ -49,7 +72,12 @@ function Favoris() {
             <div className="product-description">{fav.produit?.description}</div>
             <div className="product-footer">
               <span className="productprice">{fav.produit?.prix} MAD</span>
-              {/* Optionally add add-to-cart button here */}
+              <button
+                className="addtocart"
+                onClick={() => ajouterAuPanier(fav.produit)}
+              >
+                Ajouter au panier
+              </button>
             </div>
           </div>
         ))}

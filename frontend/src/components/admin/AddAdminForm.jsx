@@ -41,7 +41,10 @@ export default function AddAdminForm({ onBack }) {
       <h3>
         Ajouter un autre admin
         {onBack && (
-          <FaTimes onClick={onBack} style={{ float: "right", cursor: "pointer" }} />
+          <FaTimes
+            onClick={onBack}
+            style={{ float: "right", cursor: "pointer" }}
+          />
         )}
       </h3>
       <input
@@ -81,7 +84,11 @@ export default function AddAdminForm({ onBack }) {
         className="profil-input"
       />
       <div style={{ display: "flex", gap: 8 }}>
-        <button type="submit" className="profil-edit-btn" style={{ marginTop: 8 }}>
+        <button
+          type="submit"
+          className="profil-edit-btn"
+          style={{ marginTop: 8 }}
+        >
           Ajouter
         </button>
         <button

@@ -3,7 +3,7 @@ import axios from "axios";
 import home1 from "../assets/images/home1.jpeg";
 import "../assets/First.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useNavigate   } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const First = () => {
   const Navigate = useNavigate();
@@ -15,6 +15,12 @@ const First = () => {
   const [price, setPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [favoris, setFavoris] = useState([]);
+
+  const coupons = [
+    { code: "BIG25", description: "-25% pour 200 DH d'achat ou plus !" },
+    { code: "SAVE10", description: "-10% pour 100 DH d'achat ou plus !" },
+    { code: "FIRST50", description: "-50% sur votre première commande !" }
+  ];
 
   useEffect(() => {
     axios
@@ -97,6 +103,27 @@ const First = () => {
       <div className="home-section">
         <img src={home1} alt="home" className="home-img" />
       </div>
+
+      <section className="coupons-section">
+        <h2 className="section-title"> Coupons et Promotions</h2>
+        <div className="coupons-list">
+          {coupons.map((coupon) => (
+            <div className="coupon-card" key={coupon.code}>
+              <div className="coupon-code">{coupon.code}</div>
+              <div className="coupon-desc">{coupon.description}</div>
+              <button
+                className="copy-btn"
+                onClick={() => {
+                  navigator.clipboard.writeText(coupon.code);
+                  alert(`Code ${coupon.code} copié dans le presse-papiers !`);
+                }}
+              >
+                Copier
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="categories-section">
         <h2 className="section-title">  Nos spécialités</h2>

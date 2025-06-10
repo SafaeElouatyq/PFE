@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/navbar.css";
+import Logo from "../assets/images/S-M.png";
 
 const Nav = () => {
     const navigate = useNavigate();
@@ -12,23 +13,27 @@ const Nav = () => {
 
     return (
         <nav className="navbarr">
-            <ul className="nav-links">
-                <li className="link">
+            <div className="navbarr-logo">
+                <Link to="/acceuil">
+                    <img src={Logo} alt="logo" className="navbarr-logo-img" />
+                </Link>
+            </div>
+            <ul className="navbarr-links">
+                <li>
                     <Link to="/acceuil">Acceuil</Link>
                 </li>
-                <li className="link">
+                <li>
                     <Link to="/personnalise">Personnalise</Link>
                 </li>
-                <li className="link">
+                <li>
                     <Link to="/favoris">Favoris</Link>
                 </li>
-                <li className="link">
-                    <Link to="/panier">panier</Link>
+                <li>
+                    <Link to="/panier">Panier</Link>
                 </li>
-                <li className="link">
-                    <Link to="/profile">profile</Link>
+                <li>
+                    <Link to="/profile">Profile</Link>
                 </li>
-              
             </ul>
         </nav>
     );

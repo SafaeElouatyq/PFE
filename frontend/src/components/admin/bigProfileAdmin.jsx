@@ -6,7 +6,7 @@ import AddAdminForm from "./AddAdminForm";
 import "../../assets/bigProfile.css";
 
 export default function BigProfileAdmin() {
-  const [rightView, setRightView] = useState(""); // '', 'edit', 'password', 'addAdmin'
+  const [rightView, setRightView] = useState("");
 
   const Edit = () => setRightView("edit");
   const Password = () => setRightView("password");

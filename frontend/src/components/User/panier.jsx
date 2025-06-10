@@ -8,6 +8,7 @@ const Panier = () => {
   const [promo, setPromo] = useState("");
   const [promoInfo, setPromoInfo] = useState(null);
   const [promoError, setPromoError] = useState("");
+  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +17,13 @@ const Panier = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => setItems(res.data));
+
+    axios
+      .get("http://localhost:8000/api/user", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => setUserId(res.data.id))
+      .catch(() => {});
   }, []);
 
   const supprimerItem = (id) => {
@@ -45,9 +53,22 @@ const Panier = () => {
 
   const appliquerPromo = () => {
     setPromoError("");
+    setPromoInfo(null);
+    const total = items.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+    if (!userId) {
+      setPromoError("Utilisateur non identifié.");
+      return;
+    }
     axios
-      .post("http://localhost:8000/api/coupon/check", { code: promo })
-      .then((res) => setPromoInfo(res.data))
+      .post("http://localhost:8000/api/coupon/check", {
+        code: promo,
+        montant_total: total,
+        user_id: userId,
+      })
+      .then((res) => setPromoInfo({
+        ...res.data,
+        remise: Math.round((res.data.remise_percent || 0) * total / 100)
+      }))
       .catch((err) => setPromoError(err.response?.data?.message || "Erreur"));
   };
 

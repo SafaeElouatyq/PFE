@@ -1,4 +1,3 @@
-/* General Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +5,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body Styling */
 .body {
   background-color: #fff0f3;
   display: flex;
@@ -14,15 +12,12 @@
   align-items: center;      
 }
 
-/* Container of the form */
 .login-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Card style */
 .login-box {
   background-color: white;
   padding: 50px 30px;
@@ -33,7 +28,6 @@
   text-align: center;
 }
 
-/* Circle above */
 .login-box .profile-circle {
   width: 120px;
   height: 120px;
@@ -51,7 +45,6 @@
   color: #777;
 }
 
-/* Titles */
 .login-box h2 {
   color: #ff5e91;
   font-size: 28px;
@@ -64,7 +57,6 @@
   margin-bottom: 25px;
 }
 
-/* Inputs */
 .login-box label {
   display: block;
   text-align: left;
@@ -86,7 +78,6 @@
 }
 
 
-/* Eye icon (you can make it functional if needed) */
 .password-wrapper {
   position: relative;
 }
@@ -100,7 +91,6 @@
   color: #999;
 }
 
-/* Forgot password */
 .login-box .forgot {
   display: block;
   text-align: right;
@@ -110,7 +100,6 @@
   text-decoration: none;
 }
 
-/* Button */
 .login-box button {
   width: 100%;
   background-color: #ff5e91;
@@ -127,7 +116,6 @@
   background-color: #ff3c7a;
 }
 
-/* Sign up link */
 .login-box .signup-text {
   margin-top: 20px;
   font-size: 14px;

@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../assets/sideBar.css";
+import Logo from "../../assets/images/S-M.png";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -21,9 +22,18 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
+      <div
+        className="sidebar-header"
+        style={{ marginBottom: "20px", marginTop: "20px" }}
+      >
+        <img
+          src={Logo}
+          alt="Logo"
+        />
+      </div>
       <ul className="nav nav-pills">
         <li className="nav-item">
-          <NavLink to="/admin" className="nav-link">
+          <NavLink to="/admin" end className="nav-link">
             <FaTachometerAlt /> Dashboard
           </NavLink>
         </li>

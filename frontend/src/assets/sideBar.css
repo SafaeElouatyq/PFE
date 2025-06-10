@@ -35,6 +35,15 @@
 }
 
 .sidebar .nav-link.active {
-  color: black;
-  background: none;
+  background: rgba(100, 148, 237, 0.256);
+
+color: black;}
+
+.sidebar-header img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  display: flex-start;
+  margin: 0 auto;
+  
 }

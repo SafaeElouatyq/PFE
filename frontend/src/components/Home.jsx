@@ -1,32 +1,25 @@
 import "../assets/home.css";
 import { Link } from "react-router-dom";
-// import Footer from './footer';
-
-import Cdonut from "../assets/images/Cdonut.png";
-import donut from "../assets/images/donut.png";
+import Logo from "../assets/images/S-M.png";
 import cookie from "../assets/images/cookie.png";
-import cupcake from "../assets/images/cupcake.png";
-import croissant from "../assets/images/croissant.png";
-
 import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 const Home = () => {
   return (
-    <><section className="home">
-      <nav className="navbar">
-        <div className="logo">
-          <Link to="/admin-login" style={{ textDecoration: "none", color: "inherit" }}>
-            LOGO
+    <section className="home">
+      <nav className="home-navbar">
+        <div className="home-logo">
+          <Link to="/admin-login">
+            <img src={Logo} alt="logo" className="home-logo-img" />
           </Link>
         </div>
-        <ul className="nav-links">
-          
-          <li className="link">
+        <ul className="home-nav-links">
+          <li>
             <Link to="/register" className="nav-inscription">
               Inscription
             </Link>
           </li>
-          <li className="link">
+          <li>
             <Link to="/login" className="nav-connexion">
               Connexion
             </Link>
@@ -41,28 +34,20 @@ const Home = () => {
             Create, try, and enjoy desserts made just for you. Because every
             moment deserves a special treat.
           </p>
-          <Link to='/login'><button className="order-btn">Commander !</button>
-
+          <Link to='/login'>
+            <button className="order-btn">Commander !</button>
           </Link>
           <div className="icones">
-            <a href="">
-              <FaFacebook className="icon facebook" />
-            </a>
-            <a href="">
-              <FaInstagram className="icon instagram" />
-            </a>
-            <a href="">
-              <FaWhatsapp className="icon whatsapp" />
-            </a>
+            <a href="#"><FaFacebook className="icon facebook" /></a>
+            <a href="#"><FaInstagram className="icon instagram" /></a>
+            <a href="#"><FaWhatsapp className="icon whatsapp" /></a>
           </div>
         </div>
-
         <div className="home-image">
           <img src={cookie} alt="Dessert" />
         </div>
       </div>
     </section>
-    </>
   );
 };
 

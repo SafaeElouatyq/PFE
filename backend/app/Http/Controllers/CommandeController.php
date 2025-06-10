@@ -12,7 +12,9 @@ class CommandeController extends Controller
 {
    public function index()
 {
-    $commandes = Commande::with(['utilisateur', 'articles.item'])->get();
+    $commandes = Commande::with(['utilisateur', 'articles.item'])
+        ->orderBy('id', 'desc') 
+        ->get();
     return response()->json($commandes);
 }
 

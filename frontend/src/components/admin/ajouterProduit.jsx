@@ -49,7 +49,7 @@ function AjouterProduit() {
         setErrors(responseErrors);
       });
 
-    navigate('/produits');   
+    navigate('/admin/produits');   
   };
 
   return (
