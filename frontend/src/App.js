@@ -61,6 +61,7 @@ export default function App() {
             <Route path="edit" element={<EditProfileForm />} />
             <Route path="add-admin" element={<AddAdminForm />} />
           </Route>
+          
         </Route>
         <Route path="/confirmer-commande" element={<ConfirmerCommande />} />
         <Route path="/admin-login" element={<AdminLoginForm />} />

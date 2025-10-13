@@ -13,6 +13,7 @@ class AuthController extends Controller
         $data='ana';
         return view('index' ,compact('data'));
     }
+    
     public function register(Request $request)
     {
         $request->validate([

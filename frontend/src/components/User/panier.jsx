@@ -26,7 +26,7 @@ const Panier = () => {
       .catch(() => {});
   }, []);
 
-  const supprimerItem = (id) => {
+  const supprimer = (id) => {
     axios
       .delete(`http://localhost:8000/api/panier/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -54,7 +54,10 @@ const Panier = () => {
   const appliquerPromo = () => {
     setPromoError("");
     setPromoInfo(null);
-    const total = items.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+    const total = items.reduce(
+      (sum, item) => sum + item.prix * item.quantite,
+      0
+    );
     if (!userId) {
       setPromoError("Utilisateur non identifié.");
       return;
@@ -65,10 +68,12 @@ const Panier = () => {
         montant_total: total,
         user_id: userId,
       })
-      .then((res) => setPromoInfo({
-        ...res.data,
-        remise: Math.round((res.data.remise_percent || 0) * total / 100)
-      }))
+      .then((res) =>
+        setPromoInfo({
+          ...res.data,
+          remise: Math.round(((res.data.remise_percent || 0) * total) / 100),
+        })
+      )
       .catch((err) => setPromoError(err.response?.data?.message || "Erreur"));
   };
 
@@ -141,7 +146,7 @@ const Panier = () => {
                     <td>
                       <button
                         className="panier-remove-btn"
-                        onClick={() => supprimerItem(item.id)}
+                        onClick={() => supprimer(item.id)}
                       >
                         x
                       </button>
@@ -163,15 +168,14 @@ const Panier = () => {
               onChange={(e) => setPromo(e.target.value)}
               style={{ flex: 1, marginRight: 8 }}
             />
-            <button
-              onClick={appliquerPromo}
-              className="panier-promo-btn"
-            >
+            <button onClick={appliquerPromo} className="panier-promo-btn">
               Appliquer
             </button>
           </div>
           {promoError && (
-            <div style={{ color: "red", fontSize: "0.95rem" }}>{promoError}</div>
+            <div style={{ color: "red", fontSize: "0.95rem" }}>
+              {promoError}
+            </div>
           )}
           {promoInfo && (
             <div style={{ color: "green", fontSize: "0.95rem" }}>
@@ -194,7 +198,9 @@ const Panier = () => {
           </div>
           <button
             className="panier-checkout-btn"
-            onClick={() => navigate("/confirmer-commande", { state: { items, totalFinal } })}
+            onClick={() =>
+              navigate("/confirmer-commande", { state: { items, totalFinal } })
+            }
           >
             Valider la commande
           </button>

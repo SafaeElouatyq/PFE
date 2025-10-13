@@ -65,7 +65,7 @@ export default function LoginForm() {
         <button type="submit" onClick={handleSubmit} value="login">Se connecter</button>
 
         <p className="mt-4 text-center">
-          Vous n'avez pas de compte ?{" "}
+          Vous n'avez pas de compte ?
           <span
             className="text-pink-600 cursor-pointer underline"
             onClick={() => setShowRegister(true)}

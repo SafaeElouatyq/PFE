@@ -41,6 +41,11 @@ class CouponController extends Controller
                 ], 400);
             }
         }
+        
+
+
+        
+         
 
         if ($code === 'BIG25' && $montant < 200) {
             return response()->json([
@@ -48,7 +53,7 @@ class CouponController extends Controller
             ], 400);
         }
         if ($code === 'SAVE10' && $montant < 100) {
-            return response()->json([
+            return response()->json([ 
                 'message' => 'Le code SAVE10 nécessite un minimum de 100 DH d\'achat.'
             ], 400);
         }

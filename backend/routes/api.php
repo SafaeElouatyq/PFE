@@ -85,7 +85,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('/admin/profile', [AdminProfileController::class, 'show']);
     Route::post('/admin/profile', [AdminProfileController::class, 'update']);
     Route::post('/admin/password', [AdminProfileController::class, 'changePassword']);
-    Route::post('/admins', [AdminProfileController::class, 'store']); // Ajouter un admin
+    Route::post('/admins', [AdminProfileController::class, 'store']); 
 });
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {

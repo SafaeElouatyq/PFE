@@ -74,7 +74,7 @@ export default function RegisterForm() {
         <button type="submit" onClick={add} value="Sign up">S'inscrire</button>
 
         <p className="mt-4 text-center">
-          Vous avez déjà un compte ?{" "}
+          Vous avez déjà un compte ?
           <span
             className="text-pink-600 cursor-pointer underline"
             onClick={() => setShowLogin(true)}
